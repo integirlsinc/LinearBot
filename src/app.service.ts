@@ -9,7 +9,7 @@ export class AppService {
     const username = await GqlService.getAssignee(payload.data.assigneeId);
     const msgEmbed = new MessageEmbed()
       .setColor('#0099ff')
-      .setTitle(`${payload.type}: ${payload.data.title}`)
+      .setTitle(`${payload.url.split('/')[5]}: ${payload.data.title}`)
       .setURL(payload.url)
       .setAuthor(`${payload.type} ${payload.url.split('/')[5]} ${payload.action}d`, process.env.COMPANYLOGO)
       .addFields(
