@@ -11,7 +11,7 @@ export class AppService {
       .setColor('#0099ff')
       .setTitle(`${payload.type}: ${payload.data.title}`)
       .setURL(payload.url)
-      .setAuthor(`${payload.type} ${payload.data.issueId} ${payload.action}d`, process.env.COMPANYLOGO)
+      .setAuthor(`${payload.type} ${payload.data.url.split('/')[4]} ${payload.action}d`, process.env.COMPANYLOGO)
       .addFields(
         { name: 'Status', value: payload.data.state.name, inline: true },
         { name: 'Assignee', value: username, inline: true },
@@ -31,6 +31,6 @@ export class AppService {
       body += `\nTitle has been changed to **${payload.data.title}**`;
     }
     const text = action + body;
-    await (channel as TextChannel).send(text, msgEmbed);
+    await (channel as TextChannel).send(msgEmbed);
   }
 }
